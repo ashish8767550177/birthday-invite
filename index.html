@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>birthday invite</title>
+    <!-- Fix typo: birhday to birthday -->
+    <style>
+      * {
+        font-size: 50px;
+        font-family: Century;
+      }
+      body {
+        background-color: lightblue;
+      }
+      .btn {
+        width: 20%;
+      }
+      .btn:hover {
+        color: red;
+      }
+    </style>
+    <script>
+      let name = ["Ashish", "Sargam"];
+      function compute() {
+        event.preventDefault();
+        let msg = document.getElementById("id_msg");
+        let action = document.activeElement.value;
+        if (action == "add") {
+          let n = prompt("Enter friends' names"); // Fix typo: frnds to friends
+          if (n !== "") {
+            // Change: Removed space after exclamation mark
+            name.push(n);
+            msg.innerHTML = name;
+          }
+        } else if (action == "remove") {
+          // Change: Removed space after "remove"
+          let n = prompt("Enter the name removed ");
+          if (name.indexOf(n) !== -1) {
+            // Change: Removed space after exclamation mark
+            name.splice(name.indexOf(n), 1);
+          } else {
+            // Change: Added condition for alert
+            alert(n + " not found");
+          }
+        } else if (action == "show") {
+          msg.innerHTML = name;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <center>
+      <h1>Birthday invite App</h1>
+      <form onsubmit="compute()">
+        <input type="submit" value="add" class="btn" />
+        <input type="submit" value="remove" class="btn" />
+        <input type="submit" value="show" class="btn" />
+      </form>
+    </center>
+    <h2 id="id_msg"></h2>
+  </body>
+</html>
